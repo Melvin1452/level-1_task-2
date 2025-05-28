@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WebVision Landing Page</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      background-color: #f9f9f9;
+      color: #333;
+      transition: background-color 0.4s, color 0.4s;
+    }
+
+    body.dark-mode {
+      background-color: #121212;
+      color: #f1f1f1;
+    }
+
+    nav, footer {
+      background: #fff;
+      transition: background-color 0.4s;
+    }
+
+    body.dark-mode nav,
+    body.dark-mode footer {
+      background: #1f1f1f;
+    }
+
+    .box, .cta {
+      transition: background-color 0.4s;
+    }
+
+    body.dark-mode .box,
+    body.dark-mode .cta {
+      background: #222;
+    }
+
+    .toggle-btn {
+      background: #eee;
+      border: none;
+      padding: 8px 16px;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 6px;
+    }
+
+    body.dark-mode .toggle-btn {
+      background: #444;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <div class="container nav-container">
+      <h2 class="logo"><i class="fas fa-globe"></i> WebVision</h2>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><button class="toggle-btn" onclick="toggleDarkMode()">Toggle Dark Mode</button></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header id="home">
+    <div class="container fade-in">
+      <h1>Your Digital Journey Starts Here</h1>
+      <p>We build beautiful, fast, and responsive websites for your brand.</p>
+      <a href="#get-started" class="cta-button">Explore Features</a>
+    </div>
+  </header>
+
+  <!-- Features Section -->
+  <section id="features" class="features">
+    <div class="container fade-in">
+      <h2>What We Offer</h2>
+      <div class="feature-grid">
+        <div class="box">
+          <i class="fas fa-paint-brush fa-2x"></i>
+          <h3>Clean Design</h3>
+          <p>Our interfaces are minimal and visually pleasing, ensuring a great user experience.</p>
+        </div>
+        <div class="box">
+          <i class="fas fa-mobile-alt fa-2x"></i>
+          <h3>Responsive Layout</h3>
+          <p>Websites that look great on phones, tablets, and desktops.</p>
+        </div>
+        <div class="box">
+          <i class="fas fa-cogs fa-2x"></i>
+          <h3>Easy Customization</h3>
+          <p>Built with flexibility in mind, so updates are simple and quick.</p>
+        </div>
+        <div class="box">
+          <i class="fas fa-rocket fa-2x"></i>
+          <h3>Performance Optimized</h3>
+          <p>Fast-loading pages optimized for performance and SEO.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section id="get-started" class="cta fade-in">
+    <div class="container">
+      <h2>Start your project with us today</h2>
+      <p>Whether you're a startup looking to build your first website or a business ready to revamp your digital presence, we're here to help. Our team provides tailored solutions to suit your brand, including web design, development, and marketing support.</p>
+      <p>Get in touch with us to schedule a free consultation, discuss your goals, and receive a customized proposal that fits your vision and budget.</p>
+      <a href="#contact" class="btn">Get Started</a>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="features">
+    <div class="container fade-in">
+      <h2>Contact Us</h2>
+      <p>We would love to hear from you. Fill out the form below or reach out through the following:</p>
+      <ul style="list-style: none; padding: 0;">
+        <li><i class="fas fa-envelope"></i> Email: contact@webvision.com</li>
+        <li><i class="fas fa-phone"></i> Phone: +123 456 7890</li>
+        <li><i class="fas fa-map-marker-alt"></i> Address: 123 Creative Lane, Design City</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 WebVision. Crafted with <i class="fas fa-heart"></i> and creativity.</p>
+    </div>
+  </footer>
+
+  <!-- Scroll Animation and Dark Mode Toggle Script -->
+  <script>
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = {
+      threshold: 0.2,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('appear');
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => appearOnScroll.observe(fader));
+
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
+</body>
+</html>
